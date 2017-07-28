@@ -1,0 +1,19 @@
+{
+  "name": "guttersnipe",
+  "version": "1.0.0",
+  "description": "Coming soon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/entozoon/guttersnipe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/entozoon/guttersnipe/issues"
+  },
+  "homepage": "https://github.com/entozoon/guttersnipe#readme"
+}
