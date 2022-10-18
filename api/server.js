@@ -16,6 +16,7 @@ app.use(connectLivereload());
 //
 app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use(express.static("cms"));
-app.get("/api", (req, res) => {
-  res.send({ message: "Sup!" });
+app.get("/api/get", (req, res) => {
+  // Open data.json and send it to the client
+  res.sendFile(path.join(__dirname, "../public", "data.json"));
 });
