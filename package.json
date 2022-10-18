@@ -6,8 +6,8 @@
   "scripts": {
     "prestart": "open-cli http://localhost:6969",
     "start": "npm-run-all -p start:*",
-    "start:server": "nodemon api/server",
-    "start:bundle": "esbuild cms/src/index.ts --bundle --outfile=cms/dist/index.js --watch",
+    "start:server": "nodemon cms/server",
+    "start:bundle": "esbuild cms/src/*.ts --bundle --outdir=cms/dist --watch",
     "Maybestart:ts-if-package-module": "tsc -w",
     "MaybeprepublishOnly": "tsc"
   },

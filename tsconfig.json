@@ -14,7 +14,7 @@
     "moduleResolution": "node"
   },
   // Set rootDir as cms folder
-  "include": ["./cms/**/*"],
+  "include": ["./cms/src/**/*"],
   "exclude": ["node_modules"]
 }
 // {
