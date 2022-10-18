@@ -3,6 +3,7 @@
     "name": "Foo!"
   },
   {
-    "name": "Bar!"
+    "name": "Bar!",
+    "count": 2
   }
 ]

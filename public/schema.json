@@ -2,5 +2,9 @@
   {
     "id": "name",
     "type": "text"
+  },
+  {
+    "id": "count",
+    "type": "number"
   }
 ]

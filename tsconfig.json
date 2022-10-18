@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
-    "lib": ["es2017", "es7", "es6", "es5", "dom", "dom.iterable"],
+    "lib": ["es2019", "dom", "dom.iterable"],
     "declaration": false, // Set outDir as cms dir
     "outDir": "./cms/dist",
     "removeComments": true,

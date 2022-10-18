@@ -43,9 +43,15 @@ const getPost = (req, res) => {
   const posts = JSON.parse(fs.readFileSync(postsPath));
   return res.json(posts[parseInt(req.params.i)]);
 };
-const createPost = (req, res) => {};
-const updatePost = (req, res) => {};
-const deletePost = (req, res) => {};
+const createPost = (req, res) => {
+  console.log("::createPost", req, res);
+};
+const updatePost = (req, res) => {
+  console.log("::updatePost", req, res);
+};
+const deletePost = (req, res) => {
+  console.log("::deletePost", req, res);
+};
 app.use("/api", router);
 router.get("/schema", getSchema);
 router.get("/posts", getPosts);
