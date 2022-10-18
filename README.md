@@ -1,3 +1,3 @@
 # Guttersnipe
 
-Coming soon
+A simple AF CMS, with few dependancies.
