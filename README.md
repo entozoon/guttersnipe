@@ -24,4 +24,4 @@ Move CMS to cloud functions or just a github logged in thing. NetlifyCMS manages
 
 ## TODO
 
-- `_headers` needs instructions. Like, added to users' site, with a specific origin ideally
+- `_headers` (in parent dir) needs instruction/injection. Like, added to users' site, with a specific origin ideally
