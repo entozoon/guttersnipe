@@ -20,7 +20,7 @@ export const doAllTheThings = async () => {
     return el;
   });
   // Append listing elements to posts element
-  postsElements.forEach((listingElement) => {
+  postsElements.forEach((listingElement:any) => {
     postsElement.appendChild(listingElement);
   });
 };
