@@ -21,3 +21,7 @@ Purely a CMS. No notion of how you'd then use the data, just straight up posts C
 ## Future
 
 Move CMS to cloud functions or just a github logged in thing. NetlifyCMS manages it somehow
+
+## TODO
+
+- `_headers` needs instructions. Like, added to users' site, with a specific origin ideally
