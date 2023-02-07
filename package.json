@@ -4,15 +4,11 @@
   "description": "Simple AF CMS",
   "main": "server.js",
   "scripts": {
-    "prestart": "open-cli http://localhost:6969",
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
     "start": "npm-run-all -p start:*",
-    "start:server": "nodemon cms/server",
-    "start:bundle": "esbuild cms/src/*.ts --bundle --outdir=cms/dist --watch",
-    "Maybestart:ts-if-package-module": "tsc -w",
-    "MaybeprepublishOnly": "tsc"
+    "start:cms": "vite --open",
+    "start:server": "nodemon server",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
