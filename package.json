@@ -1,6 +1,7 @@
 {
   "name": "guttersnipe",
   "version": "1.0.1",
+  "type": "module",
   "description": "Simple AF CMS",
   "main": "server.js",
   "scripts": {
