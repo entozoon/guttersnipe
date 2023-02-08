@@ -1,10 +1,8 @@
-"use strict";
-exports.__esModule = true;
-var path = require("path");
-var fs = require("fs");
-var express = require("express");
-var livereload = require("livereload");
-var connectLivereload = require("connect-livereload");
+import * as path from "path";
+import * as fs from "fs";
+import * as express from "express";
+import * as livereload from "livereload";
+import * as connectLivereload from "connect-livereload";
 // const path = require("node:path");
 // const fs = require("node:fs");
 // const express = require("express");
