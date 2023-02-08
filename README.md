@@ -25,4 +25,5 @@ Move CMS to cloud functions or just a github logged in thing. NetlifyCMS manages
 ## TODO
 
 - Move Vite to devDependencies and introduce a publishOnly build task, then repoint example to use this
+- ^ After which, remove peer dep @preact/preset-vite
 - `_headers` (in parent dir) needs instruction/injection. Like, added to users' site, with a specific origin ideally
