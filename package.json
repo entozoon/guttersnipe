@@ -11,7 +11,7 @@
     "dev:ui": "vite --open",
     "dev:api": "nodemon server",
     "build": "npm-run-all -p build:*",
-    "build:ui": "vite build",
+    "build:ui": "tsc && vite build",
     "build:api": "tsc server.ts",
     "cmop": "git add --all; git commit -m \"Early package dev..\"; npm version patch; git push; npm publish",
     "prepublishOnly": "npm run build"
