@@ -1,13 +1,15 @@
-// import * as path from "path";
-// import * as fs from "fs";
-// import * as express from "express";
-// import * as livereload from "livereload";
-// import * as connectLivereload from "connect-livereload";
-var path = require("node:path");
-var fs = require("node:fs");
+"use strict";
+exports.__esModule = true;
+var path = require("path");
+var fs = require("fs");
 var express = require("express");
 var livereload = require("livereload");
 var connectLivereload = require("connect-livereload");
+// const path = require("node:path");
+// const fs = require("node:fs");
+// const express = require("express");
+// const livereload = require("livereload");
+// const connectLivereload = require("connect-livereload");
 var port = 6969;
 //
 var liveReloadServer = livereload.createServer();

@@ -1,18 +1,18 @@
 {
   "name": "guttersnipe",
   "private": false,
-  "version": "0.1.18",
+  "version": "0.1.17",
   "type": "module",
   "scripts": {
     "start": "npm-run-all -p start:*",
     "start:ui": "vite preview --open",
-    "start:api": "node ./api/server",
+    "start:api": "node --use-experimental-modules ./api/server",
     "dev": "npm-run-all -p dev:*",
     "dev:ui": "vite --open",
     "dev:api": "nodemon ./api/server",
     "build": "npm-run-all -p build:*",
     "build:ui": "tsc && vite build",
-    "build:api": "tsc --module commonjs  --target es5 ./api/server.ts",
+    "build:api": "tsc ./api/server.ts",
     "cmop": "git add --all; git commit -m \"Early package dev..\"; npm version patch; git push; npm publish",
     "prepublishOnly": "npm run build"
   },
