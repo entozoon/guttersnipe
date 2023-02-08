@@ -1,4 +1,7 @@
+html {
+}
 body {
-  filter: invert(-1);
-  background:black;
+  background: black;
+  filter: invert(1);
+  font-family: sans-serif;
 }

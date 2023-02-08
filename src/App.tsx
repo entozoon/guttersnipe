@@ -1,7 +1,12 @@
 import "./App.css";
 
 function App() {
-  return <div className="App">I've lost it</div>;
+  return (
+    <>
+      <header>Guttersnipe</header>
+      <main></main>
+    </>
+  );
 }
 
 export default App;
