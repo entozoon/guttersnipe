@@ -5,7 +5,7 @@ A simple AF CMS, with few dependancies.
 ## What is this for?
 
 So you specify a JSON schema, which it uses for a dynamic admin.
-Thsi is gonna let you CRUD posts, stored then as JSON and saved, like, posted to the git repo, right?
+This is gonna let you CRUD posts, stored then as JSON and saved, like, posted to the git repo, right?
 
 Purely a CMS. No notion of how you'd then use the data, just straight up posts CRUDable and schema-able however you need.
 
@@ -14,7 +14,7 @@ Purely a CMS. No notion of how you'd then use the data, just straight up posts C
 - NPM package to run local CMS within your site
 - Schema Editor
 - JSON Editor
-- Injectable stuff depending on schema
+- Injectable stuff depending on schema, based on plugin packages guttersnipe/imdb
 - Git push JSON from UI
 - Image upload (to local assets) and reference
 
@@ -24,6 +24,4 @@ Move CMS to cloud functions or just a github logged in thing. NetlifyCMS manages
 
 ## TODO
 
-- Move Vite to devDependencies and introduce a publishOnly build task, then repoint example to use this
-- ^ After which, remove peer dep @preact/preset-vite
 - `_headers` (in parent dir) needs instruction/injection. Like, added to users' site, with a specific origin ideally
