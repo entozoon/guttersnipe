@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cmop": "git add --all; git commit -m \"Early package dev..\"; npm version patch; git push; npm publish"
   },
   "dependencies": {
     "connect-livereload": "^0.6.1",
