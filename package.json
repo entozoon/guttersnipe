@@ -1,7 +1,7 @@
 {
   "name": "guttersnipe",
   "private": false,
-  "version": "0.1.23",
+  "version": "0.1.24",
   "type": "module",
   "scripts": {
     "start": "npm-run-all -p start:*",
