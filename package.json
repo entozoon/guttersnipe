@@ -13,7 +13,7 @@
     "build": "npm-run-all -p build:*",
     "build:ui": "tsc --p ./ui && vite build ./ui",
     "build:api": "tsc --p ./api",
-    "cmop": "git add --all; git commit -m \"Early package dev..\"; npm version patch; git push; npm publish",
+    "cmop": "npm run build; git add --all; git commit -m \"Early package dev..\"; npm version patch; git push; npm publish",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
