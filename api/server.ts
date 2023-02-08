@@ -3,8 +3,8 @@
 // import * as express from "express";
 // import * as livereload from "livereload";
 // import * as connectLivereload from "connect-livereload";
-const path = require("node:path");
-const fs = require("node:fs");
+const path = require("path");
+const fs = require("fs");
 const express = require("express");
 const livereload = require("livereload");
 const connectLivereload = require("connect-livereload");
