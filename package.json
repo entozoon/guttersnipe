@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm-run-all -p start:*",
     "start:ui": "vite preview --open",
-    "start:api": "node --use-experimental-modules ./api/server",
+    "start:api": "node --experimental-modules ./api/server",
     "dev": "npm-run-all -p dev:*",
     "dev:ui": "vite --open",
     "dev:api": "nodemon ./api/server",
