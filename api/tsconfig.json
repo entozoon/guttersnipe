@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node"
+    "incremental": true,
+    "target": "es2018",
+    "moduleResolution": "node",
+    "module": "commonjs"
   }
 }
