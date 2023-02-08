@@ -2,7 +2,7 @@
   "name": "guttersnipe",
   "private": false,
   "version": "0.1.7",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "start": "npm-run-all -p start:*",
     "start:ui": "vite preview",
