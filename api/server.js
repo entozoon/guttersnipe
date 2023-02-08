@@ -8,35 +8,37 @@ import * as connectLivereload from "connect-livereload";
 // const express = require("express");
 // const livereload = require("livereload");
 // const connectLivereload = require("connect-livereload");
-var port = 6969;
+const port = 6969;
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 //
-var liveReloadServer = livereload.createServer();
+const liveReloadServer = livereload.createServer();
 liveReloadServer.watch(path.join(__dirname, "cms"));
-liveReloadServer.server.once("connection", function () {
-    setTimeout(function () {
+liveReloadServer.server.once("connection", () => {
+    setTimeout(() => {
         liveReloadServer.refresh("/");
     }, 100);
 });
-var app = express();
+const app = express();
 app.use(connectLivereload());
 //
-app.listen(port, function () { return console.log("Listening on port ".concat(port)); });
+app.listen(port, () => console.log(`Listening on port ${port}`));
 //
 // Typical routes
-app.get("/", function (req, res) {
+app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../cms/index.html"));
 });
-app.get("/posts/*", function (req, res) {
+app.get("/posts/*", (req, res) => {
     res.sendFile(path.join(__dirname, "../cms/post.html"));
 });
 //
 // API routes
 app.use(express.static(path.join(__dirname, "dist")));
-var router = express.Router();
-var postsPath = path.join(__dirname, "./data.json");
-var getPosts = function (req, res) {
+const router = express.Router();
+const postsPath = path.join(__dirname, "./data.json");
+const getPosts = (req, res) => {
     console.log(":: ~ getPosts postsPath", postsPath);
-    var posts = JSON.parse(fs.readFileSync(postsPath).toString());
+    const posts = JSON.parse(fs.readFileSync(postsPath).toString());
     console.log(":: ~ getPosts posts", posts);
     return res.json(posts);
 };
@@ -50,13 +52,13 @@ var getPosts = function (req, res) {
 //   const posts = JSON.parse(fs.readFileSync(postsPath));
 //   return res.json(posts[parseInt(req.params.i)]);
 // };
-var createPost = function (req, res) {
+const createPost = (req, res) => {
     console.log("::createPost", req, res);
 };
-var updatePost = function (req, res) {
+const updatePost = (req, res) => {
     console.log("::updatePost", req, res);
 };
-var deletePost = function (req, res) {
+const deletePost = (req, res) => {
     console.log("::deletePost", req, res);
 };
 app.use("/api", router);
