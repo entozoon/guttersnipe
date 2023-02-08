@@ -2,6 +2,10 @@
 
 A simple AF CMS, with few dependancies.
 
+## Requirements
+
+- Node 18+
+
 ## What is this for?
 
 So you specify a JSON schema, which it uses for a dynamic admin.
@@ -25,3 +29,7 @@ Move CMS to cloud functions or just a github logged in thing. NetlifyCMS manages
 ## TODO
 
 - `_headers` (in parent dir) needs instruction/injection. Like, added to users' site, with a specific origin ideally
+
+## NB
+
+compiledOnSave in tsconfig for api might remove the need for nodemon in dev...

@@ -26,10 +26,10 @@ app.use(connectLivereload());
 app.listen(port, () => console.log(`Listening on port ${port}`));
 //
 // Typical routes
-app.get("/", (req, res: any) => {
+app.get("/", (req: any, res: any) => {
   res.sendFile(path.join(__dirname, "../cms/index.html"));
 });
-app.get("/posts/*", (req, res: any) => {
+app.get("/posts/*", (req: any, res: any) => {
   res.sendFile(path.join(__dirname, "../cms/post.html"));
 });
 //

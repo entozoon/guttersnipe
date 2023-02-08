@@ -6,14 +6,14 @@
   "scripts": {
     "start": "npm-run-all -p start:*",
     "start:ui": "vite preview ./ui --open",
-    "start:api": "node ./api/server.js",
+    "start:api": "node ./api/server.cjs",
     "dev": "npm-run-all -p dev:*",
     "dev:ui": "vite ./ui --open",
     "dev:api": "nodemon ./api/server.ts",
     "build": "npm-run-all -p build:*",
     "build:ui": "tsc --p ./ui && vite build ./ui",
     "build:api": "tsc --p ./api",
-    "cmop": "npm run build; git add --all; git commit -m \"Early package dev..\"; npm version patch; git push; npm publish",
+    "cmop": "git add --all; git commit -m \"Early package dev..\"; npm version patch; git push; npm publish",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
