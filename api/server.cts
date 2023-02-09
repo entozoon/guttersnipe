@@ -6,6 +6,12 @@ const livereload = require("livereload");
 const connectLivereload = require("connect-livereload");
 const port = 6969;
 //
+if (cwd.includes("node_modules")) {
+  throw new Error(
+    "Use from project directory, not directly within node_modules"
+  );
+}
+//
 const liveReloadServer = livereload.createServer();
 liveReloadServer.watch(`${cwd}/cms`);
 liveReloadServer.server.once("connection", () => {
