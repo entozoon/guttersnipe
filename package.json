@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "npm-run-all -p start:*",
-    "start:ui": "vite preview ./ui --open --clearScreen false",
+    "start:ui": "vite ./ui --open --clearScreen false",
     "start:api": "node ./api/dist/server.cjs",
     "dev": "npm-run-all -p dev:*",
     "dev:ui": "vite ./ui --open --clearScreen false",
