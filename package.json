@@ -4,6 +4,7 @@
   "version": "0.1.43",
   "type": "module",
   "bin": {
+    "guttersnipe-ui": "npm run start:ui",
     "guttersnipe-api": "./api/dist/server.cjs"
   },
   "scripts": {

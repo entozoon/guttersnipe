@@ -9,7 +9,7 @@ const port = 6969;
 //
 if (cwd.includes("node_modules")) {
   throw new Error(
-    "Use from project directory, not directly within node_modules"
+    "AH Use from project directory, not directly within node_modules"
   );
 }
 //
