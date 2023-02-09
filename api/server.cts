@@ -6,7 +6,7 @@ const express = require("express");
 const cors = require("cors");
 const livereload = require("livereload");
 const connectLivereload = require("connect-livereload");
-const port = 6969;
+const port = 1338;
 if (cwd.includes("node_modules")) {
   throw new Error(
     "Use from project directory, not directly within node_modules"
