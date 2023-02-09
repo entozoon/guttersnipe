@@ -6,10 +6,9 @@ const express = require("express");
 const livereload = require("livereload");
 const connectLivereload = require("connect-livereload");
 const port = 6969;
-//
 if (cwd.includes("node_modules")) {
   throw new Error(
-    "AH Use from project directory, not directly within node_modules"
+    "Use from project directory, not directly within node_modules"
   );
 }
 //
@@ -38,7 +37,7 @@ app.use(express.static(`${cwd}/dist`));
 const router = express.Router();
 const postsPath = `${cwd}/data.json`;
 const getPosts = (req: any, res: any) => {
-  return "hello";
+  // return res.json(["Hello!"]);
   console.log(":: ~ getPosts postsPath", postsPath);
   const posts = JSON.parse(fs.readFileSync(postsPath).toString());
   console.log(":: ~ getPosts posts", posts);

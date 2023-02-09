@@ -4,16 +4,16 @@
   "version": "0.1.44",
   "type": "module",
   "bin": {
-    "guttersnipe-ui": "npm run start:ui",
     "guttersnipe-api": "./api/dist/server.cjs"
   },
   "scripts": {
     "start": "npm-run-all -p start:*",
-    "start:ui": "vite preview ./ui --open",
+    "start:ui": "vite preview ./ui --open --clearScreen false",
     "start:api": "node ./api/dist/server.cjs",
     "dev": "npm-run-all -p dev:*",
-    "dev:ui": "vite ./ui --open",
-    "dev:api": "tsc --p ./api --watch",
+    "dev:ui": "vite ./ui --open --clearScreen false",
+    "dev:api-build": "tsc --p ./api --watch",
+    "dev:api-serve": "nodemon --watch ../guttersnipe/api/dist/ --ext *.cjs --exec npm run start:api",
     "build": "npm-run-all -p build:*",
     "build:ui": "tsc --p ./ui && vite build ./ui",
     "build:api": "tsc --p ./api",
