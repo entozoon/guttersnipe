@@ -1,7 +1,7 @@
 import "./app.scss";
 import { Routes, BrowserRouter, Route, Link } from "react-router-dom";
-import { Files } from "./files";
-import { File } from "./files/view";
+import FilesIndex from "./files";
+import FilesView from "./files/view";
 //
 export function App() {
   return (
@@ -11,8 +11,8 @@ export function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Files />} />
-          <Route path="/file/:filename" element={<File />} />
+          <Route path="/" element={<FilesIndex />} />
+          <Route path="/file/:filename" element={<FilesView />} />
         </Routes>
       </main>
     </BrowserRouter>

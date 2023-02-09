@@ -2,7 +2,7 @@ import useFetch from "react-fetch-hook";
 import { Link } from "react-router-dom";
 import { api } from "../data";
 //
-export const Files = () => {
+export default () => {
   const filenames = useFetch(`${api}/getFilenames`).data as string[];
   return (
     <>
