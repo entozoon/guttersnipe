@@ -4,7 +4,7 @@
   "version": "0.1.36",
   "type": "module",
   "bin": {
-    "guttersnipe-api": "node ./api/server.cjs"
+    "guttersnipe-api": "./api/server.cjs"
   },
   "scripts": {
     "start": "npm-run-all -p start:*",
