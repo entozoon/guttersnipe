@@ -12,7 +12,7 @@
     "start:api": "node ./api/server.cjs",
     "dev": "npm-run-all -p dev:*",
     "dev:ui": "vite ./ui --open",
-    "dev:api": "nodemon ./api/server.ts",
+    "dev:api": "tsc --p ./api --watch",
     "build": "npm-run-all -p build:*",
     "build:ui": "tsc --p ./ui && vite build ./ui",
     "build:api": "tsc --p ./api",

@@ -5,6 +5,5 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "strict": true
-  },
-  "compileOnSave": false
+  }
 }

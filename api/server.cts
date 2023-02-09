@@ -38,6 +38,7 @@ app.use(express.static(`${cwd}/dist`));
 const router = express.Router();
 const postsPath = `${cwd}/data.json`;
 const getPosts = (req: any, res: any) => {
+  return "hello";
   console.log(":: ~ getPosts postsPath", postsPath);
   const posts = JSON.parse(fs.readFileSync(postsPath).toString());
   console.log(":: ~ getPosts posts", posts);
