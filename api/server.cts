@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+import { parseInterface } from "parse-interface";
 import { cwd } from "./util.cjs";
 const path = require("path");
 const fs = require("fs");
@@ -40,25 +41,31 @@ const getFilenames = (req: any, res: any) => {
     files.filter(
       (file: string) =>
         file.endsWith(".json") &&
+        !file.endsWith(".schema.json") &&
         // filter package.json and other typical baddies
         !["package.json", "package-lock.json"].includes(file)
     )
   );
 };
-const postsPath = `${cwd}/data.json`;
-const getPosts = (req: any, res: any) => {
-  // http://localhost:6969/api/posts
-  console.log(":: ~ getPosts postsPath", postsPath);
-  const posts = JSON.parse(fs.readFileSync(postsPath).toString());
-  console.log(":: ~ getPosts posts", posts);
-  return res.json(posts);
+const getFile = (req: any, res: any) => {
+  const filename = req.params.filename;
+  console.log(":: ~ getFile", filename);
+  const buffer = fs.readFileSync(`${cwd}/${filename}`);
+  const contents = JSON.parse(buffer.toString());
+  return res.json(contents);
 };
 const getSchema = (req: any, res: any) => {
-  // const schema = JSON.parse(
-  //   fs.readFileSync(`${cwd}/../public/schema.json`))
-  // );
-  // return res.json(schema);
+  const filename = req.params.filename.replace(/\.json$/, ".schema.json");
+  return getFile({ params: { filename } }, res);
 };
+// const postsPath = `${cwd}/data.json`;
+// const getPosts = (req: any, res: any) => {
+//   // http://localhost:6969/api/posts
+//   console.log(":: ~ getPosts postsPath", postsPath);
+//   const posts = JSON.parse(fs.readFileSync(postsPath).toString());
+//   console.log(":: ~ getPosts posts", posts);
+//   return res.json(posts);
+// };
 // const getPost = (req: any, res: any) => {
 //   const posts = JSON.parse(fs.readFileSync(postsPath));
 //   return res.json(posts[parseInt(req.params.i)]);
@@ -74,7 +81,8 @@ const deletePost = (req: any, res: any) => {
 };
 app.use("/api", router);
 router.get("/getFilenames", getFilenames);
-router.get("/schema", getSchema);
+router.get("/getFile/:filename", getFile);
+router.get("/getSchema/:filename", getSchema);
 // router.get("/posts", getPosts);
 // router.get("/posts/:i", getPost);
 // router.post("/posts", createPost);
