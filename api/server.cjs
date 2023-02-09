@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const util_1 = require("./util");
+const util_cjs_1 = require("./util.cjs");
 const path = require("path");
 const fs = require("fs");
 const express = require("express");
@@ -9,7 +9,7 @@ const connectLivereload = require("connect-livereload");
 const port = 6969;
 //
 const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(`${util_1.cwd}/cms`);
+liveReloadServer.watch(`${util_cjs_1.cwd}/cms`);
 liveReloadServer.server.once("connection", () => {
     setTimeout(() => {
         liveReloadServer.refresh("/");
@@ -22,16 +22,16 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 //
 // Typical routes
 app.get("/", (req, res) => {
-    res.sendFile(`${util_1.cwd}/../cms/index.html`);
+    res.sendFile(`${util_cjs_1.cwd}/../cms/index.html`);
 });
 app.get("/posts/*", (req, res) => {
-    res.sendFile(`${util_1.cwd}/../cms/post.html`);
+    res.sendFile(`${util_cjs_1.cwd}/../cms/post.html`);
 });
 //
 // API routes
-app.use(express.static(`${util_1.cwd}/dist`));
+app.use(express.static(`${util_cjs_1.cwd}/dist`));
 const router = express.Router();
-const postsPath = `${util_1.cwd}/data.json`;
+const postsPath = `${util_cjs_1.cwd}/data.json`;
 const getPosts = (req, res) => {
     console.log(":: ~ getPosts postsPath", postsPath);
     const posts = JSON.parse(fs.readFileSync(postsPath).toString());
