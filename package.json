@@ -4,12 +4,12 @@
   "version": "0.1.40",
   "type": "module",
   "bin": {
-    "guttersnipe-api": "./api/server.cjs"
+    "guttersnipe-api": "./api/dist/server.cjs"
   },
   "scripts": {
     "start": "npm-run-all -p start:*",
     "start:ui": "vite preview ./ui --open",
-    "start:api": "node ./api/server.cjs",
+    "start:api": "node ./api/dist/server.cjs",
     "dev": "npm-run-all -p dev:*",
     "dev:ui": "vite ./ui --open",
     "dev:api": "tsc --p ./api --watch",
