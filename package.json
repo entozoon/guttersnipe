@@ -1,7 +1,7 @@
 {
   "name": "guttersnipe",
   "private": false,
-  "version": "0.1.36",
+  "version": "0.1.37",
   "type": "module",
   "bin": {
     "guttersnipe-api": "./api/server.cjs"
