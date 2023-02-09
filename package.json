@@ -3,7 +3,9 @@
   "private": false,
   "version": "0.1.33",
   "type": "module",
-  "main": "./api/server.cjs",
+  "bin": {
+    "guttersnipe-api": "./api/server.cjs"
+  },
   "scripts": {
     "start": "npm-run-all -p start:*",
     "start:ui": "vite preview ./ui --open",
