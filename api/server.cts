@@ -3,6 +3,7 @@ import { cwd } from "./util.cjs";
 const path = require("path");
 const fs = require("fs");
 const express = require("express");
+const cors = require("cors");
 const livereload = require("livereload");
 const connectLivereload = require("connect-livereload");
 const port = 6969;
@@ -20,6 +21,7 @@ liveReloadServer.server.once("connection", () => {
   }, 100);
 });
 const app = express();
+app.use(cors());
 app.use(connectLivereload());
 //
 app.listen(port, () => console.log(`Listening on port ${port}`));
@@ -37,7 +39,6 @@ app.use(express.static(`${cwd}/dist`));
 const router = express.Router();
 const postsPath = `${cwd}/data.json`;
 const getPosts = (req: any, res: any) => {
-  // return res.json(["Hello!"]);
   console.log(":: ~ getPosts postsPath", postsPath);
   const posts = JSON.parse(fs.readFileSync(postsPath).toString());
   console.log(":: ~ getPosts posts", posts);
