@@ -1,18 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// import * as path from "path";
-// import * as fs from "fs";
-// import * as express from "express";
-// import * as livereload from "livereload";
-// import * as connectLivereload from "connect-livereload";
 const path = require("path");
 const fs = require("fs");
 const express = require("express");
 const livereload = require("livereload");
 const connectLivereload = require("connect-livereload");
 const port = 6969;
-// const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 //
 const liveReloadServer = livereload.createServer();
 liveReloadServer.watch(path.join(__dirname, "cms"));

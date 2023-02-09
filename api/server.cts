@@ -1,3 +1,4 @@
+import { cwd } from "./util";
 const path = require("path");
 const fs = require("fs");
 const express = require("express");
@@ -6,7 +7,7 @@ const connectLivereload = require("connect-livereload");
 const port = 6969;
 //
 const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(path.join(__dirname, "cms"));
+liveReloadServer.watch(`${cwd}/cms`);
 liveReloadServer.server.once("connection", () => {
   setTimeout(() => {
     liveReloadServer.refresh("/");
@@ -19,16 +20,16 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 //
 // Typical routes
 app.get("/", (req: any, res: any) => {
-  res.sendFile(path.join(__dirname, "../cms/index.html"));
+  res.sendFile(`${cwd}/../cms/index.html`);
 });
 app.get("/posts/*", (req: any, res: any) => {
-  res.sendFile(path.join(__dirname, "../cms/post.html"));
+  res.sendFile(`${cwd}/../cms/post.html`);
 });
 //
 // API routes
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(`${cwd}/dist`));
 const router = express.Router();
-const postsPath = path.join(__dirname, "./data.json");
+const postsPath = `${cwd}/data.json`;
 const getPosts = (req: any, res: any) => {
   console.log(":: ~ getPosts postsPath", postsPath);
   const posts = JSON.parse(fs.readFileSync(postsPath).toString());
@@ -37,7 +38,7 @@ const getPosts = (req: any, res: any) => {
 };
 // const getSchema = (req: any, res: any) => {
 //   const schema = JSON.parse(
-//     fs.readFileSync(path.join(__dirname, "../public/schema.json"))
+//     fs.readFileSync(`${cwd}/../public/schema.json`))
 //   );
 //   return res.json(schema);
 // };
@@ -56,8 +57,9 @@ const deletePost = (req: any, res: any) => {
 };
 app.use("/api", router);
 // router.get("/schema", getSchema);
+// http://localhost:6969/api/posts
 router.get("/posts", getPosts);
 // router.get("/posts/:i", getPost);
-router.post("/posts", createPost);
-router.put("/posts/:id", updatePost);
+// router.post("/posts", createPost);
+// router.put("/posts/:id", updatePost);
 // router.delete("/posts/:id", deletePost);
