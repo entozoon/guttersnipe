@@ -12,7 +12,6 @@ if (cwd.includes("node_modules")) {
     "Use from project directory, not directly within node_modules"
   );
 }
-//
 const liveReloadServer = livereload.createServer();
 liveReloadServer.watch(`${cwd}/cms`);
 liveReloadServer.server.once("connection", () => {
@@ -30,26 +29,36 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 app.get("/", (req: any, res: any) => {
   res.sendFile(`${cwd}/../cms/index.html`);
 });
-app.get("/posts/*", (req: any, res: any) => {
-  res.sendFile(`${cwd}/../cms/post.html`);
-});
 //
 // API routes
 app.use(express.static(`${cwd}/dist`));
 const router = express.Router();
+//
+const getFilenames = (req: any, res: any) => {
+  const files = fs.readdirSync(cwd) || [];
+  return res.json(
+    files.filter(
+      (file: string) =>
+        file.endsWith(".json") &&
+        // filter package.json and other typical baddies
+        !["package.json", "package-lock.json"].includes(file)
+    )
+  );
+};
 const postsPath = `${cwd}/data.json`;
 const getPosts = (req: any, res: any) => {
+  // http://localhost:6969/api/posts
   console.log(":: ~ getPosts postsPath", postsPath);
   const posts = JSON.parse(fs.readFileSync(postsPath).toString());
   console.log(":: ~ getPosts posts", posts);
   return res.json(posts);
 };
-// const getSchema = (req: any, res: any) => {
-//   const schema = JSON.parse(
-//     fs.readFileSync(`${cwd}/../public/schema.json`))
-//   );
-//   return res.json(schema);
-// };
+const getSchema = (req: any, res: any) => {
+  // const schema = JSON.parse(
+  //   fs.readFileSync(`${cwd}/../public/schema.json`))
+  // );
+  // return res.json(schema);
+};
 // const getPost = (req: any, res: any) => {
 //   const posts = JSON.parse(fs.readFileSync(postsPath));
 //   return res.json(posts[parseInt(req.params.i)]);
@@ -64,9 +73,9 @@ const deletePost = (req: any, res: any) => {
   console.log("::deletePost", req, res);
 };
 app.use("/api", router);
-// router.get("/schema", getSchema);
-// http://localhost:6969/api/posts
-router.get("/posts", getPosts);
+router.get("/getFilenames", getFilenames);
+router.get("/schema", getSchema);
+// router.get("/posts", getPosts);
 // router.get("/posts/:i", getPost);
 // router.post("/posts", createPost);
 // router.put("/posts/:id", updatePost);

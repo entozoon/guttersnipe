@@ -13,7 +13,7 @@ This is gonna let you CRUD posts, stored then as JSON and saved, like, posted to
 
 Purely a CMS. No notion of how you'd then use the data, just straight up posts CRUDable and schema-able however you need.
 
-## Where have I landed on this?
+## Plan
 
 - NPM package to run local CMS within your site
 - Schema Editor
@@ -26,10 +26,27 @@ Purely a CMS. No notion of how you'd then use the data, just straight up posts C
 
 Move CMS to cloud functions or just a github logged in thing. NetlifyCMS manages it somehow
 
+## DEV
+
+Develop this, running from the context of ../guttersnipe-example with
+npm run dev-example
+
 ## TODO
 
 - `_headers` (in parent dir) needs instruction/injection. Like, added to users' site, with a specific origin ideally
 
-## NB
+## Stream of consciousness - JSON Editor
 
-compiledOnSave in tsconfig for api might remove the need for nodemon in dev...
+Minimal requirements:
+
+- SCHEMA injection
+- Feature injection, e.g. imdb
+- Bracket grouping
+- Validation
+
+No matter how I slice it, editing raw JSON is pretty uncomfortable
+
+Maximal requirements
+
+- HTML preview
+- Post filtering / CRUD

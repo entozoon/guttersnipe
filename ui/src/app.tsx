@@ -1,17 +1,16 @@
-import ky from "ky";
-import { useEffect } from "preact/hooks";
 import "./app.css";
+import useFetch from "react-fetch-hook";
+export const api = "http://127.0.0.1:6969/api";
 export function App() {
-  useEffect(() => {
-    (async () => {
-      const posts = await ky.get("http://127.0.0.1:6969/api/posts").json();
-      console.log(":: ~ posts", posts);
-    })();
-  }, []);
+  const filenames = useFetch(`${api}/getFilenames`).data as string[];
   return (
     <>
       <header>Guttersnipe</header>
-      <main></main>
+      <main>
+        {filenames?.map((f) => (
+          <div>{f}</div>
+        ))}
+      </main>
     </>
   );
 }
