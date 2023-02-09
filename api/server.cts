@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import { cwd } from "./util.cjs";
 const path = require("path");
 const fs = require("fs");
