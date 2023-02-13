@@ -1,8 +1,98 @@
+$brand-1: #034872;
+$fg: white;
+$bc: lighten($brand-1, 5%);
+$bg: darken($brand-1, 15%);
+$bw: 0.3em;
+$br: 1em;
+$p: 1em;
+$header-height: 3em;
+@import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
+@import "./reset";
 body {
-  filter: invert(1);
-  background: black;
-  font-family: sans-serif;
+  font-family: "Play", sans-serif;
+  padding: $header-height + $p $p $p;
+}
+body,
+input,
+select,
+textarea {
+  background: $bg;
+}
+body,
+input,
+select,
+textarea {
+  color: $fg;
+}
+a {
+  color: inherit;
 }
 header {
-  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: $header-height;
+  padding: $p;
+  line-height: 1;
+  background: linear-gradient(
+    to bottom,
+    $brand-1 0%,
+    $brand-1 70%,
+    rgba($brand-1, 0) 100%
+  );
+  a {
+    text-decoration: none;
+    font-size: 2em;
+  }
+  h1 {
+    padding: 0;
+    margin: 0;
+  }
+}
+form {
+  display: block;
+  margin: 0 0 1em;
+  padding: 1em;
+  background: $brand-1;
+  border: $bw outset $bc;
+  border-radius: $br;
+  section {
+    display: block;
+    margin: 0 0 1em;
+  }
+}
+label {
+  display: block;
+  margin: 0 0 $bw;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  border: none;
+  padding: 0.5em;
+  border: $bw inset $bc;
+  border-radius: $br;
+  font-family: inherit;
+}
+[type="number"] {
+  width: 20ch;
+}
+[type="color"] {
+  padding: 0.4em;
+  width: 3em;
+  height: 3em;
+}
+button {
+  padding: 1em;
+  font-family: inherit;
+  background: white;
+  color: black;
+  border: $bw outset white;
+  border-radius: $br;
 }

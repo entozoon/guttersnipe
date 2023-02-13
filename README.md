@@ -29,7 +29,8 @@ Move CMS to cloud functions or just a github logged in thing. NetlifyCMS manages
 ## DEV
 
 Develop this, running from the context of ../guttersnipe-example with
-npm run dev-example
+
+    npm run dev-example
 
 ## TODO
 
@@ -50,3 +51,8 @@ Maximal requirements
 
 - HTML preview
 - Post filtering / CRUD
+
+## Lists to create with it
+
+- Youtube channels for (rare) video essays, e.g. broey, jenny, ..
+- Depression hacks (snail mail audiotree, coding, because i'm good at it)
