@@ -5,7 +5,9 @@ export interface SchemaProperty {
   description?: string;
 }
 export interface Schema {
+  required?: string[];
   properties: SchemaProperty[];
+  propertiesToList?: string[];
 }
 // SchemaProperty + value
 export interface EntryField extends SchemaProperty {
@@ -38,19 +40,17 @@ export const parseEntryToSchemaFields = (
       description: property.description,
     };
   });
-  // gonna make each entry as its own form!
-  // { "title": "foo" } =>
-  // [ { "title": "foo",
-  //      "type": "text" } ]
-  // const fields = schema.properties.map((field) => {
-  //   return {
-  //     ...field,
-  //     value: entry[field.name],
-  //   };
-  // });
-  // [ { "textField": "text stuff", } ] ->
   return fields;
 };
+// export const parseSchemaFieldsToEntry = (fields: EntryField[]): any => {
+//   console.log(":: ~ fields", fields);
+//   if (!fields) return {};
+//   const entry = fields.reduce((acc: any, field: EntryField) => {
+//     acc[field.name] = field.value;
+//     return acc;
+//   }, {});
+//   return entry;
+// };
 export const inputElementTypes = [
   "checkbox",
   "color",

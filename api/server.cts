@@ -1,5 +1,4 @@
 #! /usr/bin/env node
-import { parseInterface } from "parse-interface";
 import { cwd } from "./util.cjs";
 const path = require("path");
 const fs = require("fs");
@@ -49,42 +48,37 @@ const getFilenames = (req: any, res: any) => {
 };
 const getFile = (req: any, res: any) => {
   const filename = req.params.filename;
-  console.log(":: ~ getFile", filename);
   const buffer = fs.readFileSync(`${cwd}/${filename}`);
   const contents = JSON.parse(buffer.toString());
+  return contents;
+};
+const getEntries = (req: any, res: any) => {
+  const contents = getFile(req, res);
   return res.json(contents);
+};
+const getEntry = (req: any, res: any) => {
+  const entries = getFile({ params: { filename: req.params.filename } }, res);
+  const { index } = req.params;
+  return res.json(entries[index]);
 };
 const getSchema = (req: any, res: any) => {
   const filename = req.params.filename.replace(/\.json$/, ".schema.json");
-  return getFile({ params: { filename } }, res);
+  const schema = getFile({ params: { filename } }, res);
+  return res.json(schema);
 };
-// const postsPath = `${cwd}/data.json`;
-// const getPosts = (req: any, res: any) => {
-//   // http://localhost:6969/api/posts
-//   console.log(":: ~ getPosts postsPath", postsPath);
-//   const posts = JSON.parse(fs.readFileSync(postsPath).toString());
-//   console.log(":: ~ getPosts posts", posts);
-//   return res.json(posts);
-// };
-// const getPost = (req: any, res: any) => {
-//   const posts = JSON.parse(fs.readFileSync(postsPath));
-//   return res.json(posts[parseInt(req.params.i)]);
-// };
-const createPost = (req: any, res: any) => {
-  console.log("::createPost", req, res);
-};
-const updatePost = (req: any, res: any) => {
-  console.log("::updatePost", req, res);
-};
-const deletePost = (req: any, res: any) => {
-  console.log("::deletePost", req, res);
+const postEntry = (req: any, res: any) => {
+  const { filename, index } = req.params;
+  const entries = getFile({ params: { filename } }, res);
+  entries[index] = req.body;
+  fs.writeFileSync(`${cwd}/${filename}`, JSON.stringify(entries, null, 2));
+  return res.json(entries[index]);
 };
 app.use("/api", router);
 router.get("/getFilenames", getFilenames);
-router.get("/getFile/:filename", getFile);
+router.get("/getEntries/:filename", getEntries);
+router.get("/getEntry/:filename/:index", getEntry);
 router.get("/getSchema/:filename", getSchema);
-// router.get("/posts", getPosts);
-// router.get("/posts/:i", getPost);
+router.post("/postEntry/:filename/:index", postEntry);
 // router.post("/posts", createPost);
 // router.put("/posts/:id", updatePost);
 // router.delete("/posts/:id", deletePost);
