@@ -25,11 +25,17 @@ export const Entry = ({
   if (!schema && !entryFields) {
     return <>Couldn't find schema or parse data against it</>;
   }
-  const submit = (values: FieldValues) => {
+  const submit = async (values: FieldValues) => {
     console.log(":: ~ values", values);
     // Inject it like, correctly back into the entries array at the right index
-
-    // Send it back to the server
+    const result = await fetch(`${api}/updateEntry/${filename}/${index}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+    console.log(":: ~ result", result);
   };
   return (
     <>

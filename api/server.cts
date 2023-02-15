@@ -32,6 +32,8 @@ app.get("/", (req: any, res: any) => {
 //
 // API routes
 app.use(express.static(`${cwd}/dist`));
+// allow POST
+app.use(express.json());
 const router = express.Router();
 //
 const getFilenames = (req: any, res: any) => {
@@ -66,19 +68,45 @@ const getSchema = (req: any, res: any) => {
   const schema = getFile({ params: { filename } }, res);
   return res.json(schema);
 };
-const postEntry = (req: any, res: any) => {
+const updateEntry = (req: any, res: any) => {
   const { filename, index } = req.params;
-  const entries = getFile({ params: { filename } }, res);
-  entries[index] = req.body;
-  fs.writeFileSync(`${cwd}/${filename}`, JSON.stringify(entries, null, 2));
-  return res.json(entries[index]);
+  const injection = req.body;
+  // parse injection fields with schema
+  const schema = getSchema({ params: { filename } }, res);
+  // This is all nonsense but yeah, right idea.. use morning brain on it
+  const updatedEntry = Object.keys(injection).reduce((acc, key) => {
+    const field = schema.find((field: any) => field.key === key);
+    if (field) {
+      const { type } = field;
+      if (type === "number") {
+        acc[key] = Number(injection[key]);
+      } else if (type === "boolean") {
+        acc[key] = Boolean(injection[key]);
+      } else {
+        acc[key] = injection[key];
+      }
+    }
+    return acc;
+  }, {});
+  console.log(":: ~ updatedEntry", updatedEntry);
+
+  // const entries = getFile({ params: { filename } }, res);
+
+  // entries[index] = updatedEntry;
+  // fs.writeFileSync(
+  //   `${cwd}/${filename}`,
+  //   JSON.stringify(entries, null, 2),
+  //   "utf8"
+  // );
+  // return res.json(updatedEntry);
+  return res.json("okay");
 };
 app.use("/api", router);
 router.get("/getFilenames", getFilenames);
 router.get("/getEntries/:filename", getEntries);
 router.get("/getEntry/:filename/:index", getEntry);
 router.get("/getSchema/:filename", getSchema);
-router.post("/postEntry/:filename/:index", postEntry);
+router.post("/updateEntry/:filename/:index", updateEntry);
 // router.post("/posts", createPost);
 // router.put("/posts/:id", updatePost);
 // router.delete("/posts/:id", deletePost);
